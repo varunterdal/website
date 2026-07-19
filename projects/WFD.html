@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <nav class="navbar__container">
+
+        <a href="../index.html" class="navbar__logo">
+
+            Varun S Terdal
+
+        </a>
+
+        <ul class="navbar__links">
+
+            <li><a href="../index.html">Home</a></li>
+
+            <li><a href="../resume.pdf" target="_blank">Resume</a></li>
+
+            <li><a href="../index.html#contact">Contact</a></li>
+
+        </ul>
+
+    </nav>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edge AI | Real-Time Face, Age & Gender Detection</title>
+
+<style>
+    /* =========================
+   NAVBAR
+========================= */
+
+.navbar__container{
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+    padding: 18px 8%;
+
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    box-shadow: 0 4px 18px rgba(0,0,0,0.15);
+}
+
+.navbar__logo{
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    transition: .3s;
+}
+
+.navbar__logo:hover{
+    color: #60a5fa;
+}
+
+.navbar__links{
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+}
+
+.navbar__links li{
+    list-style: none;
+}
+
+.navbar__links a{
+    position: relative;
+    text-decoration: none;
+    color: #e2e8f0;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: .3s;
+}
+
+.navbar__links a:hover{
+    color: #60a5fa;
+}
+
+.navbar__links a::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0%;
+    height: 2px;
+    background: #60a5fa;
+    transition: .3s;
+}
+
+.navbar__links a:hover::after{
+    width: 100%;
+}
+
+/* Responsive */
+
+@media (max-width:768px){
+
+    .navbar__container{
+        flex-direction: column;
+        gap: 15px;
+        padding: 18px 5%;
+    }
+
+    .navbar__links{
+        gap: 18px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .navbar__logo{
+        font-size: 1.2rem;
+    }
+
+}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
+body{background:#f5f7fa;color:#333;line-height:1.7;}
+.container{width:90%;max-width:1150px;margin:auto;padding:60px 0;}
+.hero{background:linear-gradient(135deg,#111827,#2563eb);color:#fff;padding:70px 0;}
+.hero h1{font-size:40px;margin-bottom:10px;}
+.hero p{max-width:850px;color:#dbeafe;font-size:18px;}
+.card{background:#fff;padding:35px;border-radius:12px;margin-top:35px;box-shadow:0 10px 30px rgba(0,0,0,.08);}
+.section-title{font-size:28px;color:#111827;margin-bottom:18px;border-left:5px solid #2563eb;padding-left:12px;}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;}
+.box{background:#f8fafc;padding:20px;border-radius:10px;border-left:4px solid #2563eb;}
+.box h3{margin-bottom:10px;color:#111827;}
+.box ul{padding-left:18px;}
+.box li{margin-bottom:8px;}
+.workflow{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:20px;}
+.step{background:#2563eb;color:#fff;padding:12px 18px;border-radius:8px;font-weight:600;}
+.arrow{display:flex;align-items:center;font-size:22px;color:#2563eb;}
+.tech{display:flex;flex-wrap:wrap;gap:10px;margin-top:15px;}
+.tech span{background:#e0ecff;color:#1d4ed8;padding:8px 15px;border-radius:25px;font-size:14px;font-weight:600;}
+.result{background:#eff6ff;border-left:5px solid #2563eb;padding:20px;border-radius:10px;}
+.footer{text-align:center;padding:35px;color:#666;}
+@media(max-width:768px){.arrow{display:none;}.hero h1{font-size:32px;}}
+</style>
+
+</head>
+<body>
+
+<section class="hero">
+<div class="container">
+<h1>Edge AI</h1>
+<p>Real-time Face Detection, Age Estimation, and Gender Classification system using OpenCV DNN models. The application performs on-device inference through a webcam, enabling low-latency, privacy-preserving, and offline AI.</p>
+</div>
+</section>
+
+<div class="container">
+
+<div class="card">
+<h2 class="section-title">Project Overview</h2>
+<p style="text-align:justify;">
+This Edge AI application performs real-time face detection, age prediction, and gender classification directly on an edge device without requiring cloud connectivity. Built using OpenCV's Deep Neural Network (DNN) module and pre-trained Caffe models, the system delivers fast, privacy-focused inference suitable for computer vision, IoT, and embedded AI applications.
+</p>
+</div>
+
+<div class="card">
+<h2 class="section-title">System Workflow</h2>
+
+<div class="workflow">
+<div class="step">Webcam Input</div>
+<div class="arrow">→</div>
+<div class="step">Face Detection</div>
+<div class="arrow">→</div>
+<div class="step">Age Prediction</div>
+<div class="arrow">→</div>
+<div class="step">Gender Classification</div>
+<div class="arrow">→</div>
+<div class="step">Real-Time Display</div>
+</div>
+
+</div>
+
+<div class="card">
+<h2 class="section-title">Key Features</h2>
+
+<div class="grid">
+
+<div class="box">
+<h3>Computer Vision</h3>
+<ul>
+<li>Real-time face detection</li>
+<li>Webcam-based inference</li>
+<li>Bounding box visualization</li>
+</ul>
+</div>
+
+<div class="box">
+<h3>AI Models</h3>
+<ul>
+<li>Age estimation</li>
+<li>Gender classification</li>
+<li>OpenCV DNN inference</li>
+</ul>
+</div>
+
+<div class="box">
+<h3>Edge Computing</h3>
+<ul>
+<li>Runs completely offline</li>
+<li>Low latency processing</li>
+<li>Privacy-preserving AI</li>
+</ul>
+</div>
+
+<div class="box">
+<h3>Future Scope</h3>
+<ul>
+<li>Face recognition</li>
+<li>ESP32-CAM support</li>
+<li>Federated learning integration</li>
+</ul>
+</div>
+
+</div>
+
+</div>
+
+<div class="card">
+<h2 class="section-title">Technology Stack</h2>
+
+<div class="tech">
+<span>Python</span>
+<span>OpenCV</span>
+<span>OpenCV DNN</span>
+<span>Caffe Models</span>
+<span>NumPy</span>
+<span>Computer Vision</span>
+<span>Edge AI</span>
+<span>FastAPI</span>
+</div>
+
+</div>
+
+<div class="card">
+<h2 class="section-title">Project Impact</h2>
+
+<div class="result">
+<ul>
+<li>Real-time face, age, and gender prediction using a webcam.</li>
+<li>Fully on-device AI without cloud dependency.</li>
+<li>Fast and efficient inference using OpenCV DNN models.</li>
+<li>Modular architecture for future IoT and federated learning applications.</li>
+<li>Demonstrates practical deployment of Edge AI in computer vision systems.</li>
+</ul>
+</div>
+
+</div>
+
+</div>
+
+<div class="footer">
+© 2026 • Edge AI — Real-Time Face, Age & Gender Detection
+</div>
+
+</body>
+</html>

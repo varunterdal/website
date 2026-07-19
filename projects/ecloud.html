@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <nav class="navbar__container">
+
+        <a href="../index.html" class="navbar__logo">
+
+            Varun S Terdal
+
+        </a>
+
+        <ul class="navbar__links">
+
+            <li><a href="../index.html">Home</a></li>
+
+            <li><a href="../resume.pdf" target="_blank">Resume</a></li>
+
+            <li><a href="../index.html#contact">Contact</a></li>
+
+        </ul>
+
+    </nav>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agentic Async Federated Learning</title>
+
+<style>
+    /* =========================
+   NAVBAR
+========================= */
+
+.navbar__container{
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+    padding: 18px 8%;
+
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    box-shadow: 0 4px 18px rgba(0,0,0,0.15);
+}
+
+.navbar__logo{
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    transition: .3s;
+}
+
+.navbar__logo:hover{
+    color: #60a5fa;
+}
+
+.navbar__links{
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+}
+
+.navbar__links li{
+    list-style: none;
+}
+
+.navbar__links a{
+    position: relative;
+    text-decoration: none;
+    color: #e2e8f0;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: .3s;
+}
+
+.navbar__links a:hover{
+    color: #60a5fa;
+}
+
+.navbar__links a::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0%;
+    height: 2px;
+    background: #60a5fa;
+    transition: .3s;
+}
+
+.navbar__links a:hover::after{
+    width: 100%;
+}
+
+/* Responsive */
+
+@media (max-width:768px){
+
+    .navbar__container{
+        flex-direction: column;
+        gap: 15px;
+        padding: 18px 5%;
+    }
+
+    .navbar__links{
+        gap: 18px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .navbar__logo{
+        font-size: 1.2rem;
+    }
+
+}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
+body{background:#f5f7fa;color:#333;line-height:1.7;}
+.container{width:90%;max-width:1150px;margin:auto;padding:60px 0;}
+.hero{background:linear-gradient(135deg,#111827,#4f46e5);color:#fff;padding:70px 0;}
+.hero h1{font-size:40px;margin-bottom:10px;}
+.hero p{max-width:850px;color:#dbeafe;font-size:18px;}
+.card{background:#fff;padding:35px;border-radius:12px;margin-top:35px;box-shadow:0 10px 30px rgba(0,0,0,.08);}
+.section-title{font-size:28px;color:#111827;margin-bottom:18px;border-left:5px solid #4f46e5;padding-left:12px;}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;}
+.box{background:#f8fafc;padding:20px;border-radius:10px;border-left:4px solid #4f46e5;}
+.box h3{margin-bottom:10px;color:#111827;}
+.box ul{padding-left:18px;}
+.box li{margin-bottom:8px;}
+.workflow{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:20px;}
+.step{background:#4f46e5;color:#fff;padding:12px 18px;border-radius:8px;font-weight:600;}
+.arrow{display:flex;align-items:center;font-size:22px;color:#4f46e5;}
+.tech{display:flex;flex-wrap:wrap;gap:10px;margin-top:15px;}
+.tech span{background:#e0e7ff;color:#4338ca;padding:8px 15px;border-radius:25px;font-size:14px;font-weight:600;}
+.result{background:#eef2ff;border-left:5px solid #4f46e5;padding:20px;border-radius:10px;}
+.footer{text-align:center;padding:35px;color:#666;}
+@media(max-width:768px){.arrow{display:none;}.hero h1{font-size:32px;}}
+</style>
+
+</head>
+<body>
+
+<section class="hero">
+<div class="container">
+<h1>Agentic Async Federated Learning</h1>
+<p>An AI-driven Asynchronous Federated Learning framework that enhances communication efficiency, scalability, and privacy for heterogeneous edge-cloud environments using intelligent agents and adaptive aggregation.</p>
+</div>
+</section>
+
+<div class="container">
+
+<div class="card">
+<h2 class="section-title">Project Overview</h2>
+<p style="text-align:justify;">
+This research introduces an Agentic AI-integrated Asynchronous Federated Learning (AsyncFL) framework that enables efficient collaborative model training without sharing raw data. Intelligent edge and cloud agents dynamically evaluate update quality, network conditions, resource availability, and model freshness to optimize communication and aggregation while maintaining privacy and model performance.
+</p>
+</div>
+
+<div class="card">
+<h2 class="section-title">System Workflow</h2>
+
+<div class="workflow">
+<div class="step">Edge Devices</div>
+<div class="arrow">→</div>
+<div class="step">Local Training</div>
+<div class="arrow">→</div>
+<div class="step">Agent Evaluation</div>
+<div class="arrow">→</div>
+<div class="step">Async Aggregation</div>
+<div class="arrow">→</div>
+<div class="step">Global Model</div>
+</div>
+
+</div>
+
+<div class="card">
+<h2 class="section-title">Key Features</h2>
+
+<div class="grid">
+
+<div class="box">
+<h3>Agentic AI</h3>
+<ul>
+<li>Adaptive update selection</li>
+<li>Resource-aware decisions</li>
+<li>Network-aware communication</li>
+</ul>
+</div>
+
+<div class="box">
+<h3>Communication Optimization</h3>
+<ul>
+<li>MessagePack serialization</li>
+<li>Delta parameter updates</li>
+<li>Zlib compression</li>
+</ul>
+</div>
+
+<div class="box">
+<h3>Federated Learning</h3>
+<ul>
+<li>Asynchronous client updates</li>
+<li>Privacy-preserving training</li>
+<li>Reduced straggler effects</li>
+</ul>
+</div>
+
+<div class="box">
+<h3>Edge Computing</h3>
+<ul>
+<li>Edge-cloud deployment</li>
+<li>Scalable architecture</li>
+<li>Efficient resource utilization</li>
+</ul>
+</div>
+
+</div>
+
+</div>
+
+<div class="card">
+<h2 class="section-title">Technology Stack</h2>
+
+<div class="tech">
+<span>Python</span>
+<span>Flower FL</span>
+<span>KubeEdge</span>
+<span>Agentic AI</span>
+<span>AsyncFL</span>
+<span>MessagePack</span>
+<span>Zlib</span>
+<span>Edge Computing</span>
+</div>
+
+</div>
+
+<div class="card">
+<h2 class="section-title">Research Outcomes</h2>
+
+<div class="result">
+<ul>
+<li>Reduced communication overhead and network latency.</li>
+<li>Improved scalability in heterogeneous edge-cloud environments.</li>
+<li>Maintained stable model convergence and high accuracy.</li>
+<li>Enhanced resource utilization through intelligent agent decisions.</li>
+<li>Demonstrated communication-efficient privacy-preserving federated learning.</li>
+</ul>
+</div>
+
+</div>
+
+</div>
+
+<div class="footer">
+© 2026 • Agentic AI for Communication-Efficient Asynchronous Federated Learning
+</div>
+
+</body>
+</html>

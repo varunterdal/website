@@ -1,0 +1,86 @@
+/* ======================================================
+   NAVBAR
+====================================================== */
+
+.navbar__container{
+    position:sticky;
+    top:0;
+    z-index:1000;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    width:100%;
+    padding:18px 8%;
+
+    background:#ffffff;
+    border-bottom:1px solid #e5e7eb;
+    box-shadow:0 4px 18px rgba(0,0,0,.05);
+}
+
+.navbar__logo{
+    text-decoration:none;
+    color:#111827;
+    font-size:1.35rem;
+    font-weight:700;
+    transition:.3s;
+}
+
+.navbar__logo:hover{
+    color:#2563eb;
+}
+
+.navbar__links{
+    display:flex;
+    align-items:center;
+    gap:30px;
+    list-style:none;
+}
+
+.navbar__links li{
+    list-style:none;
+}
+
+.navbar__links a{
+    position:relative;
+    text-decoration:none;
+    color:#4b5563;
+    font-weight:500;
+    transition:.3s;
+}
+
+.navbar__links a:hover{
+    color:#2563eb;
+}
+
+.navbar__links a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-6px;
+    width:0;
+    height:2px;
+    background:#2563eb;
+    transition:.3s;
+}
+
+.navbar__links a:hover::after{
+    width:100%;
+}
+
+@media(max-width:768px){
+
+.navbar__container{
+    flex-direction:column;
+    gap:15px;
+    padding:16px 5%;
+}
+
+.navbar__links{
+    gap:18px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+}

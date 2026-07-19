@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <nav class="navbar__container">
+
+        <a href="../index.html" class="navbar__logo">
+
+            Varun S Terdal
+
+        </a>
+
+        <ul class="navbar__links">
+
+            <li><a href="../index.html">Home</a></li>
+
+            <li><a href="../resume.pdf" target="_blank">Resume</a></li>
+
+            <li><a href="../index.html#contact">Contact</a></li>
+
+        </ul>
+
+    </nav>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Denoising X-rays | Varun S Terdal</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar__container{
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+    padding: 18px 8%;
+
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    box-shadow: 0 4px 18px rgba(0,0,0,0.15);
+}
+
+.navbar__logo{
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    transition: .3s;
+}
+
+.navbar__logo:hover{
+    color: #60a5fa;
+}
+
+.navbar__links{
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+}
+
+.navbar__links li{
+    list-style: none;
+}
+
+.navbar__links a{
+    position: relative;
+    text-decoration: none;
+    color: #e2e8f0;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: .3s;
+}
+
+.navbar__links a:hover{
+    color: #60a5fa;
+}
+
+.navbar__links a::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0%;
+    height: 2px;
+    background: #60a5fa;
+    transition: .3s;
+}
+
+.navbar__links a:hover::after{
+    width: 100%;
+}
+
+/* Responsive */
+
+@media (max-width:768px){
+
+    .navbar__container{
+        flex-direction: column;
+        gap: 15px;
+        padding: 18px 5%;
+    }
+
+    .navbar__links{
+        gap: 18px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .navbar__logo{
+        font-size: 1.2rem;
+    }
+
+}
+body{
+    background:#f5f7fa;
+    color:#333;
+    line-height:1.8;
+}
+
+.container{
+    width:90%;
+    max-width:1150px;
+    margin:auto;
+    padding:60px 0;
+}
+
+.hero{
+    background:linear-gradient(135deg,#0f172a,#1e3a8a);
+    color:#fff;
+    padding:70px 0;
+}
+
+.hero h1{
+    font-size:40px;
+    margin-bottom:12px;
+}
+
+.hero p{
+    max-width:850px;
+    color:#dbeafe;
+    font-size:18px;
+}
+
+.card{
+    background:#fff;
+    padding:35px;
+    border-radius:12px;
+    margin-top:35px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+.section-title{
+    font-size:28px;
+    margin-bottom:18px;
+    color:#0f172a;
+    position:relative;
+    padding-bottom:8px;
+}
+
+.section-title::after{
+    content:"";
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:65px;
+    height:4px;
+    background:#2563eb;
+    border-radius:20px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:22px;
+    margin-top:20px;
+}
+
+.box{
+    background:#f8fafc;
+    border-left:5px solid #2563eb;
+    padding:22px;
+    border-radius:10px;
+}
+
+.box h3{
+    margin-bottom:12px;
+    color:#0f172a;
+}
+
+.box ul{
+    padding-left:18px;
+}
+
+.box li{
+    margin-bottom:8px;
+}
+
+.workflow{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:12px;
+    margin-top:20px;
+}
+
+.step{
+    background:#2563eb;
+    color:#fff;
+    padding:12px 18px;
+    border-radius:8px;
+    font-weight:600;
+}
+
+.arrow{
+    display:flex;
+    align-items:center;
+    font-size:22px;
+    color:#2563eb;
+}
+
+.tech{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:18px;
+}
+
+.tech span{
+    background:#e0ecff;
+    color:#1d4ed8;
+    padding:8px 15px;
+    border-radius:25px;
+    font-size:14px;
+    font-weight:600;
+}
+
+.result{
+    background:#eff6ff;
+    border-left:5px solid #2563eb;
+    padding:25px;
+    border-radius:10px;
+}
+
+.footer{
+    text-align:center;
+    color:#666;
+    padding:35px;
+}
+
+@media(max-width:768px){
+.arrow{display:none;}
+.hero h1{font-size:32px;}
+.section-title{font-size:24px;}
+}
+</style>
+
+</head>
+<body>
+
+<section class="hero">
+<div class="container">
+<h1>Denoising X-rays</h1>
+<p>
+A deep learning-based medical imaging system that enhances low-dose chest X-ray images by removing Poisson noise using the DnCNN architecture, improving image quality while preserving important anatomical details for better clinical diagnosis.
+</p>
+</div>
+</section>
+
+<div class="container">
+
+<div class="card">
+<h2 class="section-title">Project Overview</h2>
+
+<p style="text-align:justify;">
+Chest X-rays are widely used for diagnosing lung diseases, but low-dose imaging often introduces Poisson noise that reduces image quality and affects diagnosis. This project proposes a DnCNN-based deep learning framework trained on the NIH Chest X-ray dataset to restore noisy images. A hybrid loss function combining Mean Squared Error (MSE) and Structural Similarity Index (SSIM) enables the model to preserve fine anatomical structures while effectively suppressing noise, resulting in clearer and more reliable medical images.
+</p>
+
+</div>
+
+<div class="card">
+
+<h2 class="section-title">System Workflow</h2>
+
+<div class="workflow">
+
+<div class="step">NIH Dataset</div>
+<div class="arrow">→</div>
+
+<div class="step">Preprocessing</div>
+<div class="arrow">→</div>
+
+<div class="step">Poisson Noise</div>
+<div class="arrow">→</div>
+
+<div class="step">DnCNN Model</div>
+<div class="arrow">→</div>
+
+<div class="step">Hybrid Loss</div>
+<div class="arrow">→</div>
+
+<div class="step">Denoised X-ray</div>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<h2 class="section-title">Key Features</h2>
+
+<div class="grid">
+
+<div class="box">
+<h3>Image Enhancement</h3>
+<ul>
+<li>Removes Poisson noise from chest X-rays.</li>
+<li>Improves image clarity for diagnosis.</li>
+<li>Preserves anatomical structures.</li>
+</ul>
+</div>
+
+<div class="box">
+<h3>Deep Learning Model</h3>
+<ul>
+<li>DnCNN convolutional neural network.</li>
+<li>Hybrid MSE + SSIM loss function.</li>
+<li>Optimized for medical image restoration.</li>
+</ul>
+</div>
+
+<div class="box">
+<h3>Dataset</h3>
+<ul>
+<li>NIH Chest X-ray Dataset.</li>
+<li>Large-scale medical image collection.</li>
+<li>Training and evaluation pipeline.</li>
+</ul>
+</div>
+
+<div class="box">
+<h3>Applications</h3>
+<ul>
+<li>Medical image enhancement.</li>
+<li>Low-dose X-ray reconstruction.</li>
+<li>Clinical decision support.</li>
+</ul>
+</div>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<h2 class="section-title">Technology Stack</h2>
+
+<div class="tech">
+<span>Python</span>
+<span>PyTorch</span>
+<span>DnCNN</span>
+<span>OpenCV</span>
+<span>NumPy</span>
+<span>Deep Learning</span>
+<span>Medical Imaging</span>
+<span>Image Processing</span>
+</div>
+
+</div>
+
+<div class="card">
+
+<h2 class="section-title">Experimental Results</h2>
+
+<div class="result">
+
+<ul>
+
+<li><strong>PSNR:</strong> 33.25 dB</li>
+
+<li><strong>MSE:</strong> 4.76 × 10<sup>-4</sup></li>
+
+<li>Achieved superior denoising performance compared to GAN-based approaches.</li>
+
+<li>Generated cleaner chest X-ray images while preserving structural details.</li>
+
+<li>Improved interpretability and diagnostic quality of medical images.</li>
+
+</ul>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<h2 class="section-title">Research Contribution</h2>
+
+<p style="text-align:justify;">
+This work demonstrates the effectiveness of deep convolutional neural networks for medical image denoising. By combining DnCNN with a hybrid MSE-SSIM loss function, the proposed approach successfully enhances low-dose chest X-rays, reduces imaging noise, and preserves clinically important structures, making it a promising solution for AI-assisted medical imaging applications.
+</p>
+
+</div>
+
+</div>
+
+<div class="footer">
+© 2026 • Denoising X-rays using Deep Learning
+</div>
+
+</body>
+</html>

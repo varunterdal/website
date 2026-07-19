@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <nav class="navbar__container">
+
+        <a href="../index.html" class="navbar__logo">
+
+            Varun S Terdal
+
+        </a>
+
+        <ul class="navbar__links">
+
+            <li><a href="../index.html">Home</a></li>
+
+            <li><a href="../resume.pdf" target="_blank">Resume</a></li>
+
+            <li><a href="../index.html#contact">Contact</a></li>
+
+        </ul>
+
+    </nav>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LexRAG | Intelligent Legal Document QA</title>
+
+<style>
+    /* =========================
+   NAVBAR
+========================= */
+
+.navbar__container{
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+    padding: 18px 8%;
+
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    box-shadow: 0 4px 18px rgba(0,0,0,0.15);
+}
+
+.navbar__logo{
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    transition: .3s;
+}
+
+.navbar__logo:hover{
+    color: #60a5fa;
+}
+
+.navbar__links{
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+}
+
+.navbar__links li{
+    list-style: none;
+}
+
+.navbar__links a{
+    position: relative;
+    text-decoration: none;
+    color: #e2e8f0;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: .3s;
+}
+
+.navbar__links a:hover{
+    color: #60a5fa;
+}
+
+.navbar__links a::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0%;
+    height: 2px;
+    background: #60a5fa;
+    transition: .3s;
+}
+
+.navbar__links a:hover::after{
+    width: 100%;
+}
+
+/* Responsive */
+
+@media (max-width:768px){
+
+    .navbar__container{
+        flex-direction: column;
+        gap: 15px;
+        padding: 18px 5%;
+    }
+
+    .navbar__links{
+        gap: 18px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .navbar__logo{
+        font-size: 1.2rem;
+    }
+
+}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+}
+
+body{
+    background:#f5f7fa;
+    color:#333;
+    line-height:1.8;
+}
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+    padding:60px 0;
+}
+
+.hero{
+    background:linear-gradient(135deg,#0f172a,#1e293b);
+    color:#fff;
+    padding:70px 0;
+}
+
+.hero h1{
+    font-size:42px;
+    margin-bottom:12px;
+}
+
+.hero p{
+    font-size:18px;
+    color:#d6dce8;
+    max-width:850px;
+}
+
+.card{
+    background:#fff;
+    border-radius:14px;
+    padding:35px;
+    margin-top:35px;
+    box-shadow:0 12px 35px rgba(0,0,0,.08);
+}
+
+.section-title{
+    font-size:28px;
+    color:#0f172a;
+    margin-bottom:18px;
+    position:relative;
+    padding-bottom:10px;
+}
+
+.section-title::after{
+    content:"";
+    width:70px;
+    height:4px;
+    background:#2563eb;
+    position:absolute;
+    left:0;
+    bottom:0;
+    border-radius:20px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:25px;
+    margin-top:25px;
+}
+
+.feature{
+    background:#f8fafc;
+    border-left:5px solid #2563eb;
+    padding:22px;
+    border-radius:10px;
+}
+
+.feature h3{
+    color:#0f172a;
+    margin-bottom:12px;
+    font-size:20px;
+}
+
+.feature ul{
+    padding-left:20px;
+}
+
+.feature li{
+    margin-bottom:10px;
+}
+
+.abstract{
+    text-align:justify;
+}
+
+.pipeline{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:15px;
+    margin-top:25px;
+}
+
+.step{
+    background:#2563eb;
+    color:#fff;
+    padding:15px 22px;
+    border-radius:8px;
+    font-weight:600;
+}
+
+.arrow{
+    display:flex;
+    align-items:center;
+    font-size:24px;
+    color:#2563eb;
+}
+
+.tech{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:18px;
+}
+
+.tech span{
+    background:#e8f0ff;
+    color:#1d4ed8;
+    padding:10px 16px;
+    border-radius:30px;
+    font-weight:600;
+    font-size:14px;
+}
+
+.result-box{
+    background:#eff6ff;
+    border-left:6px solid #2563eb;
+    padding:25px;
+    border-radius:10px;
+    margin-top:20px;
+}
+
+.footer{
+    text-align:center;
+    padding:35px;
+    color:#666;
+    font-size:15px;
+}
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:32px;
+}
+
+.section-title{
+font-size:24px;
+}
+
+.arrow{
+display:none;
+}
+
+}
+</style>
+
+</head>
+<body>
+
+<section class="hero">
+<div class="container">
+
+<h1>LexRAG</h1>
+
+<p>
+A Retrieval-Augmented Generation (RAG) framework for intelligent legal document question answering using Indian legal texts. The system combines semantic retrieval with Large Language Models to deliver accurate, context-aware, and grounded legal responses.
+</p>
+
+</div>
+</section>
+
+<div class="container">
+
+<div class="card">
+
+<h2 class="section-title">Project Overview</h2>
+
+<p class="abstract">
+LexRAG is an AI-powered legal question answering system designed to overcome the limitations of traditional keyword-based legal search. Instead of relying solely on exact keyword matching, the framework employs semantic search using transformer embeddings and Retrieval-Augmented Generation (RAG) to understand the intent and context of legal queries. The system processes Indian legal documents—including the Constitution of India, IPC, CrPC, and BNSS—into semantic vector representations, enabling efficient retrieval of relevant legal provisions even when the user's query does not contain matching keywords. Retrieved legal context is supplied to a Large Language Model to generate factually grounded and contextually relevant responses while minimizing hallucinations.
+</p>
+
+</div>
+
+<div class="card">
+
+<h2 class="section-title">System Workflow</h2>
+
+<div class="pipeline">
+
+<div class="step">Legal Documents</div>
+
+<div class="arrow">→</div>
+
+<div class="step">Preprocessing</div>
+
+<div class="arrow">→</div>
+
+<div class="step">Semantic Chunking</div>
+
+<div class="arrow">→</div>
+
+<div class="step">Embeddings</div>
+
+<div class="arrow">→</div>
+
+<div class="step">Vector Database</div>
+
+<div class="arrow">→</div>
+
+<div class="step">Semantic Retrieval</div>
+
+<div class="arrow">→</div>
+
+<div class="step">LLM Response</div>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<h2 class="section-title">Key Features</h2>
+
+<div class="grid">
+
+<div class="feature">
+<h3>Semantic Legal Search</h3>
+<ul>
+<li>Retrieves relevant legal provisions based on semantic similarity rather than exact keyword matching.</li>
+<li>Improves retrieval accuracy for complex legal queries.</li>
+<li>Understands contextual relationships within legal documents.</li>
+</ul>
+</div>
+
+<div class="feature">
+<h3>Retrieval-Augmented Generation</h3>
+<ul>
+<li>Combines semantic retrieval with Large Language Models.</li>
+<li>Generates grounded responses using retrieved legal evidence.</li>
+<li>Reduces hallucinations by providing factual legal context.</li>
+</ul>
+</div>
+
+<div class="feature">
+<h3>Efficient Vector Retrieval</h3>
+<ul>
+<li>Documents are segmented into semantic chunks.</li>
+<li>Chunks are converted into dense vector embeddings.</li>
+<li>Fast similarity search through vector indexing.</li>
+</ul>
+</div>
+
+<div class="feature">
+<h3>Legal Knowledge Base</h3>
+<ul>
+<li>Constitution of India</li>
+<li>Indian Penal Code (IPC)</li>
+<li>Code of Criminal Procedure (CrPC)</li>
+<li>Bharatiya Nagarik Suraksha Sanhita (BNSS)</li>
+</ul>
+</div>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<h2 class="section-title">Technology Stack</h2>
+
+<div class="tech">
+
+<span>Python</span>
+
+<span>LlamaIndex</span>
+
+<span>ChromaDB</span>
+
+<span>Sentence Transformers</span>
+
+<span>Vector Embeddings</span>
+
+<span>Semantic Chunking</span>
+
+<span>Large Language Models</span>
+
+<span>Retrieval-Augmented Generation</span>
+
+<span>Legal NLP</span>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<h2 class="section-title">Experimental Results</h2>
+
+<div class="result-box">
+
+<ul>
+
+<li>Generated approximately <strong>1,799 semantic legal chunks</strong> from Indian legal documents.</li>
+
+<li>Improved semantic retrieval compared to traditional keyword-based search.</li>
+
+<li>Successfully retrieved relevant legal provisions even when exact query terms were absent.</li>
+
+<li>Produced context-aware, grounded, and factually consistent legal responses.</li>
+
+<li>Reduced hallucination through Retrieval-Augmented Generation.</li>
+
+<li>Validated across constitutional rights, criminal procedures, and IPC-related legal queries.</li>
+
+</ul>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<h2 class="section-title">Project Highlights</h2>
+
+<div class="grid">
+
+<div class="feature">
+<h3>Problem Addressed</h3>
+<p>Traditional legal search engines struggle with contextual understanding, making it difficult to locate relevant legal information using natural language queries.</p>
+</div>
+
+<div class="feature">
+<h3>Solution</h3>
+<p>LexRAG leverages semantic embeddings, vector search, and Retrieval-Augmented Generation to provide accurate, explainable, and context-aware legal question answering.</p>
+</div>
+
+<div class="feature">
+<h3>Impact</h3>
+<p>The framework demonstrates the practical applicability of AI-driven legal assistance systems for researchers, legal professionals, and students seeking reliable legal information.</p>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="footer">
+© 2026 • LexRAG — Intelligent Legal Document Question Answering Framework
+</div>
+
+</body>
+</html>
