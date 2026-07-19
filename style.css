@@ -150,8 +150,23 @@ button:focus-visible {
   color: var(--color-accent);
 }
 
-.navbar__link:hover::after {
-  width: 100%;
+.navbar__links{
+    position:absolute;
+    top:100%;
+    left:0;
+    width:100%;
+
+    background:#fff;
+
+    display:none;
+
+    flex-direction:column;
+
+    padding:20px 0;
+
+    box-shadow:0 10px 20px rgba(0,0,0,.1);
+
+    z-index:1000;
 }
 
 /* Mobile nav toggle — hidden checkbox + hamburger pattern (no JS needed for open/close) */
